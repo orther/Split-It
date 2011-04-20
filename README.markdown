@@ -16,6 +16,6 @@ Split-It creates multiple split viewports by taking in a variable amount of argu
 
 ## Create a single tall view on the left and 3 stacked views to the right of that.
 
-    :Split 1 3
+    :SplitIt 1 3
 
 NOTE: Right now you can not have rows that span more than a single column. I am currently trying to decide the best way to easally express more advanced viewport layouts in a simple format.
