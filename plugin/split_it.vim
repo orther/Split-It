@@ -25,11 +25,11 @@ command -nargs=+ SplitIt :call <SID>splitGrid(<f-args>)
 fun! s:splitGrid(...)
     for num_cols in a:000
         " create column
-        :vnew
+        :vsplit
         " loop to create rows for current column
         for row_i in range(2, num_cols)
             "create row
-            :new
+            :split
         endfor
         " move to next column
         :wincmd l
