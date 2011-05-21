@@ -46,26 +46,27 @@ augroup END
 " ------------------------------------------------------------------------------
 " Create layout grid based on columns with variable amount of rows
 fun! s:splitItColGrid(...)
-    " mark this window as split
-    let w:split_it_this_window_split = 1
+    " store this start window number
+    let g:split_it_start_winnr = winnr()
     " loop to build columns
     for num_cols in a:000
-        " create column
-        :vsplit
-        " mark this window as split
-        let w:split_it_this_window_split = 1
         " loop to create rows for current column
         for row_i in range(2, num_cols)
             "create row
-            :split
-            " mark this window as split
-            let w:split_it_this_window_split = 1
+            :rightbelow new
         endfor
         " move to next column
         :wincmd l
+        " open window to the right for next col
+        :botright vnew
     endfor
     " close last uneeded viewport
     :close
+    " move cursor to very top left window
+    for num_cols in a:000
+        :wincmd h
+        :wincmd k
+    endfor
 endfun
 
 " Split screen using set layout
