@@ -23,19 +23,23 @@ set cpo&vim
 
 " set default layout to a single window:w
 let s:layout = [1]
-" TODO: RESET THIS TO ONLY 1 WINDOW FOR DEFAULT!!!
+
+" set auto split off by default
+let s:autosplit = 0
 
 " Commands
 " ------------------------------------------------------------------------------
 command -nargs=+ SplitIt :call <SID>splitItColGrid(<f-args>)
 command -nargs=0 SplitItLayout :call <SID>splitItLayout()
+command -nargs=0 SplitItAutoLayout :call <SID>splitItAutoLayout()
+command -nargs=0 SplitItSetAuto :call <SID>splitItSetAuto()
 command -nargs=+ SplitItSetLayout :call <SID>splitItSetLayout(<f-args>)
 
 " Autocommands
 " ------------------------------------------------------------------------------
 augroup SplitIt
-    " create splits using set layout when entering vim
-    autocmd GUIEnter * call s:splitItLayout()
+    " create splits using set layout when entering vim when auto split is on
+    autocmd GUIEnter * call s:splitItAutoLayout()
 augroup END
 
 " Functions
@@ -67,6 +71,18 @@ endfun
 " Split screen using set layout
 fun! s:splitItLayout()
     :call call (function('s:splitItColGrid'), s:layout)
+endfun
+
+" Split screen using set layout only if auto is set
+fun! s:splitItAutoLayout()
+    if s:autosplit == 1
+        :call call (function('s:splitItColGrid'), s:layout)
+    endif
+endfun
+
+" Set the layout to auto split when entering vim
+fun! s:splitItSetAuto()
+    let s:autosplit = 1
 endfun
 
 " Set the layout to be used when SplitItLayout is called
