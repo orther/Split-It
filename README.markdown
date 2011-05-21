@@ -39,7 +39,7 @@ And then you can create that layout by calling `:SplitItLayout` at any time.
 
 ## That wasn't Automatic, THIS IS AUTOMATIC!
 
-So... I need it MORE automatic. I'm lazy as shit and I can only assume you are too so I added the ability to have the SplitIt plugin load your layout when it starts (so you don't even have to google instructions how to automatically do something on Vim's new window creation you lazy bastard).
+So... I need it MORE automatic. I'm lazy as shit and I can only assume you are too so I added the ability to have the SplitIt plugin load your layout when it starts (so you don't even have to google instructions how to automatically do something on Vim's new window event you lazy bastard).
 
 To do this all you have to do is set your layout and turn on _AutoLayout_ in your .vimrc file like so:
 
